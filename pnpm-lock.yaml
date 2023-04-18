@@ -6,6 +6,7 @@ specifiers:
   '@nestjs/config': ^2.3.1
   '@nestjs/core': ^8.0.0
   '@nestjs/mapped-types': '*'
+  '@nestjs/passport': ^9.0.3
   '@nestjs/platform-express': ^8.0.0
   '@nestjs/schematics': ^8.0.0
   '@nestjs/testing': ^8.0.0
@@ -13,6 +14,8 @@ specifiers:
   '@types/express': ^4.17.13
   '@types/jest': 27.5.0
   '@types/node': ^16.0.0
+  '@types/passport': ^1.0.12
+  '@types/passport-local': ^1.0.35
   '@types/supertest': ^2.0.11
   '@typescript-eslint/eslint-plugin': ^5.0.0
   '@typescript-eslint/parser': ^5.0.0
@@ -24,6 +27,8 @@ specifiers:
   eslint-plugin-prettier: ^4.0.0
   jest: 28.0.3
   mysql2: ^3.2.0
+  passport: ^0.6.0
+  passport-local: ^1.0.0
   prettier: ^2.3.2
   reflect-metadata: ^0.1.13
   rimraf: ^3.0.2
@@ -42,12 +47,15 @@ dependencies:
   '@nestjs/config': 2.3.1_87a643b959b6379e0154059edf291609
   '@nestjs/core': 8.4.7_98d4e1064a231daa5940e5cf20e5b108
   '@nestjs/mapped-types': 1.2.2_ba16b7a3ff032005c12d3e75509700e8
+  '@nestjs/passport': 9.0.3_02481135cc74f3ad74599c5993d40444
   '@nestjs/platform-express': 8.4.7_fce4c3b686c1225eb94686491d30b061
   '@nestjs/typeorm': 9.0.1_d7e58f27d57bb79cea932324dc98f1b2
   bcryptjs: 2.4.3
   class-transformer: 0.5.1
   class-validator: 0.14.0
   mysql2: 3.2.0
+  passport: 0.6.0
+  passport-local: 1.0.0
   reflect-metadata: r2.cnpmjs.org/reflect-metadata/0.1.13
   rimraf: r2.cnpmjs.org/rimraf/3.0.2
   rxjs: 7.8.0
@@ -60,6 +68,8 @@ devDependencies:
   '@types/express': 4.17.17
   '@types/jest': 27.5.0
   '@types/node': 16.18.23
+  '@types/passport': 1.0.12
+  '@types/passport-local': 1.0.35
   '@types/supertest': 2.0.12
   '@typescript-eslint/eslint-plugin': 5.58.0_3e6bbfcd41f6c93e55004ba49a531732
   '@typescript-eslint/parser': 5.58.0_eslint@8.38.0+typescript@4.9.5
@@ -866,6 +876,16 @@ packages:
       reflect-metadata: r2.cnpmjs.org/reflect-metadata/0.1.13
     dev: false
 
+  /@nestjs/passport/9.0.3_02481135cc74f3ad74599c5993d40444:
+    resolution: {integrity: sha512-HplSJaimEAz1IOZEu+pdJHHJhQyBOPAYWXYHfAPQvRqWtw4FJF1VXl1Qtk9dcXQX1eKytDtH+qBzNQc19GWNEg==}
+    peerDependencies:
+      '@nestjs/common': ^8.0.0 || ^9.0.0
+      passport: ^0.4.0 || ^0.5.0 || ^0.6.0
+    dependencies:
+      '@nestjs/common': 8.4.7_b11626e1d3e8723ed81a03aa155de8e2
+      passport: 0.6.0
+    dev: false
+
   /@nestjs/platform-express/8.4.7_fce4c3b686c1225eb94686491d30b061:
     resolution: {integrity: sha512-lPE5Ltg2NbQGRQIwXWY+4cNrXhJdycbxFDQ8mNxSIuv+LbrJBIdEB/NONk+LLn9N/8d2+I2LsIETGQrPvsejBg==}
     peerDependencies:
@@ -1057,6 +1077,27 @@ packages:
 
   /@types/node/16.18.23:
     resolution: {integrity: sha512-XAMpaw1s1+6zM+jn2tmw8MyaRDIJfXxqmIQIS0HfoGYPuf7dUWeiUKopwq13KFX9lEp1+THGtlaaYx39Nxr58g==}
+    dev: true
+
+  /@types/passport-local/1.0.35:
+    resolution: {integrity: sha512-K4eLTJ8R0yYW8TvCqkjB0pTKoqfUSdl5PfZdidTjV2ETV3604fQxtY6BHKjQWAx50WUS0lqzBvKv3LoI1ZBPeA==}
+    dependencies:
+      '@types/express': 4.17.17
+      '@types/passport': 1.0.12
+      '@types/passport-strategy': 0.2.35
+    dev: true
+
+  /@types/passport-strategy/0.2.35:
+    resolution: {integrity: sha512-o5D19Jy2XPFoX2rKApykY15et3Apgax00RRLf0RUotPDUsYrQa7x4howLYr9El2mlUApHmCMv5CZ1IXqKFQ2+g==}
+    dependencies:
+      '@types/express': 4.17.17
+      '@types/passport': 1.0.12
+    dev: true
+
+  /@types/passport/1.0.12:
+    resolution: {integrity: sha512-QFdJ2TiAEoXfEQSNDISJR1Tm51I78CymqcBa8imbjo6dNNu+l2huDxxbDEIoFIwOSKMkOfHEikyDuZ38WwWsmw==}
+    dependencies:
+      '@types/express': 4.17.17
     dev: true
 
   /@types/prettier/2.7.2:
@@ -1803,7 +1844,7 @@ packages:
       setprototypeof: r2.cnpmjs.org/setprototypeof/1.2.0
       statuses: r2.cnpmjs.org/statuses/2.0.1
       type-is: r2.cnpmjs.org/type-is/1.6.18
-      utils-merge: r2.cnpmjs.org/utils-merge/1.0.1
+      utils-merge: 1.0.1
       vary: r2.cnpmjs.org/vary/1.1.2
     dev: false
 
@@ -2714,6 +2755,31 @@ packages:
     resolution: {integrity: sha512-Ofn/CTFzRGTTxwpNEs9PP93gXShHcTq255nzRYSKe8AkVpZY7e1fpmTfOyoIvjP5HG7Z2ZM7VS9PPhQGW2pOpw==}
     dev: false
 
+  /passport-local/1.0.0:
+    resolution: {integrity: sha512-9wCE6qKznvf9mQYYbgJ3sVOHmCWoUNMVFoZzNoznmISbhnNNPhN9xfY3sLmScHMetEJeoY7CXwfhCe7argfQow==}
+    engines: {node: '>= 0.4.0'}
+    dependencies:
+      passport-strategy: 1.0.0
+    dev: false
+
+  /passport-strategy/1.0.0:
+    resolution: {integrity: sha512-CB97UUvDKJde2V0KDWWB3lyf6PC3FaZP7YxZ2G8OAtn9p4HI9j9JLP9qjOGZFvyl8uwNT8qM+hGnz/n16NI7oA==}
+    engines: {node: '>= 0.4.0'}
+    dev: false
+
+  /passport/0.6.0:
+    resolution: {integrity: sha512-0fe+p3ZnrWRW74fe8+SvCyf4a3Pb2/h7gFkQ8yTJpAO50gDzlfjZUZTO1k5Eg9kUct22OxHLqDZoKUWRHOh9ug==}
+    engines: {node: '>= 0.4.0'}
+    dependencies:
+      passport-strategy: 1.0.0
+      pause: 0.0.1
+      utils-merge: 1.0.1
+    dev: false
+
+  /pause/0.0.1:
+    resolution: {integrity: sha512-KG8UEiEVkR3wGEb4m5yZkVCzigAD+cVEJck2CzYZO37ZGJfctvVptVO192MwrtPhzONn6go8ylnOdMhKqi4nfg==}
+    dev: false
+
   /picomatch/2.3.1:
     resolution: {integrity: sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==}
     engines: {node: '>=8.6'}
@@ -3250,6 +3316,11 @@ packages:
       escalade: 3.1.1
       picocolors: r2.cnpmjs.org/picocolors/1.0.0
     dev: true
+
+  /utils-merge/1.0.1:
+    resolution: {integrity: sha512-pMZTvIkT1d+TFGvDOqodOclx0QWkkgi6Tdoa8gC8ffGAAqz9pzPTZWAybbsHHoED/ztMtkv/VoYTYyShUn81hA==}
+    engines: {node: '>= 0.4.0'}
+    dev: false
 
   /uuid/8.3.2:
     resolution: {integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==}
@@ -6124,13 +6195,6 @@ packages:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==, registry: http://r.cnpmjs.org/, tarball: https://r2.cnpmjs.org/util-deprecate/-/util-deprecate-1.0.2.tgz}
     name: util-deprecate
     version: 1.0.2
-
-  r2.cnpmjs.org/utils-merge/1.0.1:
-    resolution: {integrity: sha512-pMZTvIkT1d+TFGvDOqodOclx0QWkkgi6Tdoa8gC8ffGAAqz9pzPTZWAybbsHHoED/ztMtkv/VoYTYyShUn81hA==, registry: http://r.cnpmjs.org/, tarball: https://r2.cnpmjs.org/utils-merge/-/utils-merge-1.0.1.tgz}
-    name: utils-merge
-    version: 1.0.1
-    engines: {node: '>= 0.4.0'}
-    dev: false
 
   r2.cnpmjs.org/uuid/8.3.2:
     resolution: {integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==, registry: http://r.cnpmjs.org/, tarball: https://r2.cnpmjs.org/uuid/-/uuid-8.3.2.tgz}

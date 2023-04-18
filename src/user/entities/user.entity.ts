@@ -1,4 +1,5 @@
 import * as bcrypt from 'bcryptjs';
+import { Exclude } from 'class-transformer';
 import { BeforeInsert, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('user')
@@ -12,6 +13,7 @@ export class User {
   @Column({ length: 100, nullable: true })
   nickname: string; // 昵称
 
+  @Exclude()
   @Column()
   password: string; // 密码
 

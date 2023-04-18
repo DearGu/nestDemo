@@ -1,12 +1,13 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import envConfig from '../config/env';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { AuthModule } from './auth/auth.module';
 import { PostsModule } from './posts/posts.module';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { ConfigService, ConfigModule } from '@nestjs/config';
-import { UserModule } from './user/user.module';
-import envConfig from '../config/env';
 import { User } from './user/entities/user.entity';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -26,11 +27,12 @@ import { User } from './user/entities/user.entity';
         password: configService.get('DB_PASSWORD', 'root'), // 密码
         database: configService.get('DB_DATABASE', 'blog'), //数据库名
         timezone: '+08:00', //服务器上配置的时区
-        synchronize: true, //根据实体自动创建数据库表， 生产环境建议关闭
+        // synchronize: true, //根据实体自动创建数据库表， 生产环境建议关闭
       }),
     }),
     PostsModule,
     UserModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
