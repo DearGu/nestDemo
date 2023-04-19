@@ -5,6 +5,7 @@ specifiers:
   '@nestjs/common': ^8.0.0
   '@nestjs/config': ^2.3.1
   '@nestjs/core': ^8.0.0
+  '@nestjs/jwt': ^10.0.3
   '@nestjs/mapped-types': '*'
   '@nestjs/passport': ^9.0.3
   '@nestjs/platform-express': ^8.0.0
@@ -15,6 +16,7 @@ specifiers:
   '@types/jest': 27.5.0
   '@types/node': ^16.0.0
   '@types/passport': ^1.0.12
+  '@types/passport-jwt': ^3.0.8
   '@types/passport-local': ^1.0.35
   '@types/supertest': ^2.0.11
   '@typescript-eslint/eslint-plugin': ^5.0.0
@@ -28,6 +30,7 @@ specifiers:
   jest: 28.0.3
   mysql2: ^3.2.0
   passport: ^0.6.0
+  passport-jwt: ^4.0.1
   passport-local: ^1.0.0
   prettier: ^2.3.2
   reflect-metadata: ^0.1.13
@@ -46,6 +49,7 @@ dependencies:
   '@nestjs/common': 8.4.7_b11626e1d3e8723ed81a03aa155de8e2
   '@nestjs/config': 2.3.1_87a643b959b6379e0154059edf291609
   '@nestjs/core': 8.4.7_98d4e1064a231daa5940e5cf20e5b108
+  '@nestjs/jwt': 10.0.3_@nestjs+common@8.4.7
   '@nestjs/mapped-types': 1.2.2_ba16b7a3ff032005c12d3e75509700e8
   '@nestjs/passport': 9.0.3_02481135cc74f3ad74599c5993d40444
   '@nestjs/platform-express': 8.4.7_fce4c3b686c1225eb94686491d30b061
@@ -55,6 +59,7 @@ dependencies:
   class-validator: 0.14.0
   mysql2: 3.2.0
   passport: 0.6.0
+  passport-jwt: 4.0.1
   passport-local: 1.0.0
   reflect-metadata: r2.cnpmjs.org/reflect-metadata/0.1.13
   rimraf: r2.cnpmjs.org/rimraf/3.0.2
@@ -69,6 +74,7 @@ devDependencies:
   '@types/jest': 27.5.0
   '@types/node': 16.18.23
   '@types/passport': 1.0.12
+  '@types/passport-jwt': 3.0.8
   '@types/passport-local': 1.0.35
   '@types/supertest': 2.0.12
   '@typescript-eslint/eslint-plugin': 5.58.0_3e6bbfcd41f6c93e55004ba49a531732
@@ -233,7 +239,7 @@ packages:
       debug: 4.3.4
       gensync: r2.cnpmjs.org/gensync/1.0.0-beta.2
       json5: 2.2.3
-      semver: r2.cnpmjs.org/semver/6.3.0
+      semver: 6.3.0
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -259,7 +265,7 @@ packages:
       '@babel/helper-validator-option': 7.21.0
       browserslist: 4.21.5
       lru-cache: 5.1.1
-      semver: r2.cnpmjs.org/semver/6.3.0
+      semver: 6.3.0
     dev: true
 
   /@babel/helper-environment-visitor/7.18.9:
@@ -857,6 +863,16 @@ packages:
       - encoding
     dev: false
 
+  /@nestjs/jwt/10.0.3_@nestjs+common@8.4.7:
+    resolution: {integrity: sha512-WO8MI3uEMOFKpbO+SAg6l4aRCr+9KvaL+raFMZaXuEUDphXek6pqdox+4tex9242pNSJUA0trfAMaiy/yVrXQg==}
+    peerDependencies:
+      '@nestjs/common': ^8.0.0 || ^9.0.0
+    dependencies:
+      '@nestjs/common': 8.4.7_b11626e1d3e8723ed81a03aa155de8e2
+      '@types/jsonwebtoken': 9.0.1
+      jsonwebtoken: 9.0.0
+    dev: false
+
   /@nestjs/mapped-types/1.2.2_ba16b7a3ff032005c12d3e75509700e8:
     resolution: {integrity: sha512-3dHxLXs3M0GPiriAcCFFJQHoDFUuzTD5w6JDhE7TyfT89YKpe6tcCCIqOZWdXmt9AZjjK30RkHRSFF+QEnWFQg==}
     peerDependencies:
@@ -1071,12 +1087,24 @@ packages:
     resolution: {integrity: sha512-wOuvG1SN4Us4rez+tylwwwCV1psiNVOkJeM3AUWUNWg/jDQY2+HE/444y5gc+jBmRqASOm2Oeh5c1axHobwRKQ==}
     dev: true
 
+  /@types/jsonwebtoken/9.0.1:
+    resolution: {integrity: sha512-c5ltxazpWabia/4UzhIoaDcIza4KViOQhdbjRlfcIGVnsE3c3brkz9Z+F/EeJIECOQP7W7US2hNE930cWWkPiw==}
+    dependencies:
+      '@types/node': 16.18.23
+
   /@types/mime/3.0.1:
     resolution: {integrity: sha512-Y4XFY5VJAuw0FgAqPNd6NNoV44jbq9Bz2L7Rh/J6jLTiHBSBJa9fxqQIvkIld4GsoDOcCbvzOUAbLPsSKKg+uA==}
     dev: true
 
   /@types/node/16.18.23:
     resolution: {integrity: sha512-XAMpaw1s1+6zM+jn2tmw8MyaRDIJfXxqmIQIS0HfoGYPuf7dUWeiUKopwq13KFX9lEp1+THGtlaaYx39Nxr58g==}
+
+  /@types/passport-jwt/3.0.8:
+    resolution: {integrity: sha512-VKJZDJUAHFhPHHYvxdqFcc5vlDht8Q2pL1/ePvKAgqRThDaCc84lSYOTQmnx3+JIkDlN+2KfhFhXIzlcVT+Pcw==}
+    dependencies:
+      '@types/express': 4.17.17
+      '@types/jsonwebtoken': 9.0.1
+      '@types/passport-strategy': 0.2.35
     dev: true
 
   /@types/passport-local/1.0.35:
@@ -1428,6 +1456,10 @@ packages:
       update-browserslist-db: 1.0.10_browserslist@4.21.5
     dev: true
 
+  /buffer-equal-constant-time/1.0.1:
+    resolution: {integrity: sha512-zRpUiDwd/xk6ADqPMATG8vc9VPrkck7T07OIx0gnjmJAnHnTVXNQG3vfvWNuiZIkwu9KrKdA1iJKfsfTVxE6NA==}
+    dev: false
+
   /buffer/5.7.1:
     resolution: {integrity: sha512-EHcyIPBQ4BSGlvjB16k5KgAJ27CIsHY/2JBmCRReo48y9rQ3MaUzWX3KVlBa4U7MyX02HdVj0K7C3WaB3ju7FQ==}
     dependencies:
@@ -1605,7 +1637,7 @@ packages:
   /debug/2.6.9:
     resolution: {integrity: sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==}
     dependencies:
-      ms: r2.cnpmjs.org/ms/2.0.0
+      ms: 2.0.0
     dev: false
 
   /debug/4.3.4:
@@ -1665,6 +1697,12 @@ packages:
   /dotenv/16.0.3:
     resolution: {integrity: sha512-7GO6HghkA5fYG9TYnNxi14/7K9f5occMlp3zXAuSxn7CKCxt9xbNWG7yF8hTCSUchlfWSe3uLmlPfigevRItzQ==}
     engines: {node: '>=12'}
+    dev: false
+
+  /ecdsa-sig-formatter/1.0.11:
+    resolution: {integrity: sha512-nagl3RYrbNv6kQkeJIpt6NJZy8twLB/2vtz6yN9Z4vRKHN4/QZJIEbqohALSgwKdnksuY3k5Addp5lg8sVoVcQ==}
+    dependencies:
+      safe-buffer: 5.2.1
     dev: false
 
   /electron-to-chromium/1.4.359:
@@ -1838,7 +1876,7 @@ packages:
       proxy-addr: r2.cnpmjs.org/proxy-addr/2.0.7
       qs: 6.10.3
       range-parser: r2.cnpmjs.org/range-parser/1.2.1
-      safe-buffer: r2.cnpmjs.org/safe-buffer/5.2.1
+      safe-buffer: 5.2.1
       send: 0.18.0
       serve-static: 1.15.0
       setprototypeof: r2.cnpmjs.org/setprototypeof/1.2.0
@@ -2094,7 +2132,7 @@ packages:
       '@babel/parser': 7.21.4
       '@istanbuljs/schema': r2.cnpmjs.org/@istanbuljs/schema/0.1.3
       istanbul-lib-coverage: r2.cnpmjs.org/istanbul-lib-coverage/3.2.0
-      semver: r2.cnpmjs.org/semver/6.3.0
+      semver: 6.3.0
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -2564,6 +2602,31 @@ packages:
     hasBin: true
     dev: true
 
+  /jsonwebtoken/9.0.0:
+    resolution: {integrity: sha512-tuGfYXxkQGDPnLJ7SibiQgVgeDgfbPq2k2ICcbgqW8WxWLBAxKQM/ZCu/IT8SOSwmaYl4dpTFCW5xZv7YbbWUw==}
+    engines: {node: '>=12', npm: '>=6'}
+    dependencies:
+      jws: 3.2.2
+      lodash: 4.17.21
+      ms: 2.1.3
+      semver: 7.4.0
+    dev: false
+
+  /jwa/1.4.1:
+    resolution: {integrity: sha512-qiLX/xhEEFKUAJ6FiBMbes3w9ATzyk5W7Hvzpa/SLYdxNtng+gcurvrI7TbACjIXlsJyr05/S1oUhZrc63evQA==}
+    dependencies:
+      buffer-equal-constant-time: 1.0.1
+      ecdsa-sig-formatter: 1.0.11
+      safe-buffer: 5.2.1
+    dev: false
+
+  /jws/3.2.2:
+    resolution: {integrity: sha512-YHlZCB6lMTllWDtSPHz/ZXTsi8S00usEV6v1tjq8tOUZzw7DpSDWVXjXDre6ed1w/pd495ODpHZYSdkRTsa0HA==}
+    dependencies:
+      jwa: 1.4.1
+      safe-buffer: 5.2.1
+    dev: false
+
   /libphonenumber-js/1.10.26:
     resolution: {integrity: sha512-oB3l4J5gEhMV+ymmlIjWedsbCpsNRqbEZ/E/MpN2QVyinKNra6DcuXywxSk/72M3DZDoH/6kzurOq1erznBMwQ==}
     dev: false
@@ -2651,6 +2714,14 @@ packages:
     resolution: {integrity: sha512-+hEnITedc8LAtIP9u3HJDFIdcLV2vXP33sqLLIzkv1Db1zO/1OxbvYf0Y1OC/S/Qo5dxHXepofhmxL02PsKe+A==}
     engines: {node: '>=10'}
     hasBin: true
+    dev: false
+
+  /ms/2.0.0:
+    resolution: {integrity: sha512-Tpp60P6IUJDTuOq/5Z8cdskzJujfwqfOTkrwIwj7IRISpnkJnT6SyJ4PCPnGMoFjC9ddhal5KVIYtAt97ix05A==}
+    dev: false
+
+  /ms/2.1.3:
+    resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
     dev: false
 
   /multer/1.4.4-lts.1:
@@ -2753,6 +2824,13 @@ packages:
 
   /parse5/6.0.1:
     resolution: {integrity: sha512-Ofn/CTFzRGTTxwpNEs9PP93gXShHcTq255nzRYSKe8AkVpZY7e1fpmTfOyoIvjP5HG7Z2ZM7VS9PPhQGW2pOpw==}
+    dev: false
+
+  /passport-jwt/4.0.1:
+    resolution: {integrity: sha512-UCKMDYhNuGOBE9/9Ycuoyh7vP6jpeTp/+sfMJl7nLff/t6dps+iaeE0hhNkKN8/HZHcJ7lCdOyDxHdDoxoSvdQ==}
+    dependencies:
+      jsonwebtoken: 9.0.0
+      passport-strategy: 1.0.0
     dev: false
 
   /passport-local/1.0.0:
@@ -2906,13 +2984,17 @@ packages:
   /safer-buffer/2.1.2:
     resolution: {integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==}
 
+  /semver/6.3.0:
+    resolution: {integrity: sha512-b39TBaTSfV6yBrapU89p5fKekE2m/NwnDocOVruQFS1/veMgdzuPcnOM34M6CwxW8jH/lxEa5rBoDeUwu5HHTw==}
+    hasBin: true
+    dev: true
+
   /semver/7.4.0:
     resolution: {integrity: sha512-RgOxM8Mw+7Zus0+zcLEUn8+JfoLpj/huFTItQy2hsM4khuC1HYRDp0cU482Ewn/Fcy6bCjufD8vAj7voC66KQw==}
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
       lru-cache: r2.cnpmjs.org/lru-cache/6.0.0
-    dev: true
 
   /send/0.18.0:
     resolution: {integrity: sha512-qqWzuOjSFOuqPjFe4NOsMLafToQQwBSOEpS+FwEt3A2V3vKubTquT3vmLTQpFgMXp8AlFWFuP1qKaJZOtPpVXg==}
@@ -2927,7 +3009,7 @@ packages:
       fresh: r2.cnpmjs.org/fresh/0.5.2
       http-errors: r2.cnpmjs.org/http-errors/2.0.0
       mime: r2.cnpmjs.org/mime/1.6.0
-      ms: r2.cnpmjs.org/ms/2.1.3
+      ms: 2.1.3
       on-finished: 2.4.1
       range-parser: r2.cnpmjs.org/range-parser/1.2.1
       statuses: r2.cnpmjs.org/statuses/2.0.1
@@ -4386,7 +4468,7 @@ packages:
     name: debug
     version: 2.6.9
     dependencies:
-      ms: r2.cnpmjs.org/ms/2.0.0
+      ms: 2.0.0
     dev: false
 
   r2.cnpmjs.org/dedent/0.7.0:
@@ -5244,7 +5326,6 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       yallist: r2.cnpmjs.org/yallist/4.0.0
-    dev: true
 
   r2.cnpmjs.org/magic-string/0.25.7:
     resolution: {integrity: sha512-4CrMT5DOHTDk4HYDlzmwu4FVCcIYI8gauveasrdCu2IKIFOJ3f0v/8MDGJCDL9oD2ppz/Av1b0Nj345H9M+XIA==, registry: http://r.cnpmjs.org/, tarball: https://r2.cnpmjs.org/magic-string/-/magic-string-0.25.7.tgz}
@@ -5260,7 +5341,7 @@ packages:
     version: 3.1.0
     engines: {node: '>=8'}
     dependencies:
-      semver: r2.cnpmjs.org/semver/6.3.0
+      semver: 6.3.0
     dev: true
 
   r2.cnpmjs.org/make-error/1.3.6:
@@ -5332,22 +5413,10 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
-  r2.cnpmjs.org/ms/2.0.0:
-    resolution: {integrity: sha512-Tpp60P6IUJDTuOq/5Z8cdskzJujfwqfOTkrwIwj7IRISpnkJnT6SyJ4PCPnGMoFjC9ddhal5KVIYtAt97ix05A==, registry: http://r.cnpmjs.org/, tarball: https://r2.cnpmjs.org/ms/-/ms-2.0.0.tgz}
-    name: ms
-    version: 2.0.0
-    dev: false
-
   r2.cnpmjs.org/ms/2.1.2:
     resolution: {integrity: sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==, registry: http://r.cnpmjs.org/, tarball: https://r2.cnpmjs.org/ms/-/ms-2.1.2.tgz}
     name: ms
     version: 2.1.2
-
-  r2.cnpmjs.org/ms/2.1.3:
-    resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==, registry: http://r.cnpmjs.org/, tarball: https://r2.cnpmjs.org/ms/-/ms-2.1.3.tgz}
-    name: ms
-    version: 2.1.3
-    dev: false
 
   r2.cnpmjs.org/mute-stream/0.0.8:
     resolution: {integrity: sha512-nnbWWOkoWyUsTjKrhgD0dcz22mdkSnpYqbEjIm2nhwhuxlSkpywJmBo8h0ZqJdkp73mb90SssHkN4rsRaBAfAA==, registry: http://r.cnpmjs.org/, tarball: https://r2.cnpmjs.org/mute-stream/-/mute-stream-0.0.8.tgz}
@@ -5793,12 +5862,6 @@ packages:
       tslib: 1.14.1
     dev: true
 
-  r2.cnpmjs.org/safe-buffer/5.2.1:
-    resolution: {integrity: sha512-rp3So07KcdmmKbGvgaNxQSJr7bGVSVk5S9Eq1F+ppbRo70+YeaDxkw5Dd8NPN+GD6bjnYm2VuPuCXmpuYvmCXQ==, registry: http://r.cnpmjs.org/, tarball: https://r2.cnpmjs.org/safe-buffer/-/safe-buffer-5.2.1.tgz}
-    name: safe-buffer
-    version: 5.2.1
-    dev: false
-
   r2.cnpmjs.org/schema-utils/3.1.1:
     resolution: {integrity: sha512-Y5PQxS4ITlC+EahLuXaY86TXfR7Dc5lw294alXOq86JAHCihAIZfqv8nNCWvaEJvaC51uN9hbLGeV0cFBdH+Fw==, registry: http://r.cnpmjs.org/, tarball: https://r2.cnpmjs.org/schema-utils/-/schema-utils-3.1.1.tgz}
     name: schema-utils
@@ -5808,13 +5871,6 @@ packages:
       '@types/json-schema': 7.0.11
       ajv: r2.cnpmjs.org/ajv/6.12.6
       ajv-keywords: r2.cnpmjs.org/ajv-keywords/3.5.2_ajv@6.12.6
-    dev: true
-
-  r2.cnpmjs.org/semver/6.3.0:
-    resolution: {integrity: sha512-b39TBaTSfV6yBrapU89p5fKekE2m/NwnDocOVruQFS1/veMgdzuPcnOM34M6CwxW8jH/lxEa5rBoDeUwu5HHTw==, registry: http://r.cnpmjs.org/, tarball: https://r2.cnpmjs.org/semver/-/semver-6.3.0.tgz}
-    name: semver
-    version: 6.3.0
-    hasBin: true
     dev: true
 
   r2.cnpmjs.org/setprototypeof/1.2.0:
@@ -6291,7 +6347,6 @@ packages:
     resolution: {integrity: sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==, registry: http://r.cnpmjs.org/, tarball: https://r2.cnpmjs.org/yallist/-/yallist-4.0.0.tgz}
     name: yallist
     version: 4.0.0
-    dev: true
 
   r2.cnpmjs.org/yaml/1.10.2:
     resolution: {integrity: sha512-r3vXyErRCYJ7wg28yvBY5VSoAF8ZvlcW9/BwUzEtUsjvX/DKs24dIkuwjtuprwJJHsbyUbLApepYTR1BN4uHrg==, registry: http://r.cnpmjs.org/, tarball: https://r2.cnpmjs.org/yaml/-/yaml-1.10.2.tgz}
