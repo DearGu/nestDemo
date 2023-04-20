@@ -1,4 +1,5 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { Cron } from '@nestjs/schedule';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import type { CreateUserDto } from './dto/create-user.dto';
@@ -29,5 +30,10 @@ export class UserService {
 
   async findOne(id: string) {
     return await this.userRepository.findOne({ where: { id } });
+  }
+
+  @Cron('5 * * * * *')
+  intervalOperate() {
+    console.log(666);
   }
 }

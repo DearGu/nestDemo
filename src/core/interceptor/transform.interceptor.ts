@@ -1,10 +1,11 @@
-import {
+import type {
   CallHandler,
   ExecutionContext,
-  Injectable,
   NestInterceptor,
 } from '@nestjs/common';
-import { map, Observable } from 'rxjs';
+import { Injectable } from '@nestjs/common';
+import type { Observable } from 'rxjs';
+import { map } from 'rxjs';
 
 @Injectable()
 export class TransformInterceptor implements NestInterceptor {

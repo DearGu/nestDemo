@@ -9,6 +9,7 @@ specifiers:
   '@nestjs/mapped-types': '*'
   '@nestjs/passport': ^9.0.3
   '@nestjs/platform-express': ^8.0.0
+  '@nestjs/schedule': ^2.2.1
   '@nestjs/schematics': ^8.0.0
   '@nestjs/testing': ^8.0.0
   '@nestjs/typeorm': ^9.0.1
@@ -53,6 +54,7 @@ dependencies:
   '@nestjs/mapped-types': 1.2.2_ba16b7a3ff032005c12d3e75509700e8
   '@nestjs/passport': 9.0.3_02481135cc74f3ad74599c5993d40444
   '@nestjs/platform-express': 8.4.7_fce4c3b686c1225eb94686491d30b061
+  '@nestjs/schedule': 2.2.1_ce2460e621852264742fbbcaa8a76b41
   '@nestjs/typeorm': 9.0.1_d7e58f27d57bb79cea932324dc98f1b2
   bcryptjs: 2.4.3
   class-transformer: 0.5.1
@@ -917,6 +919,20 @@ packages:
       tslib: 2.4.0
     dev: false
 
+  /@nestjs/schedule/2.2.1_ce2460e621852264742fbbcaa8a76b41:
+    resolution: {integrity: sha512-7jev9Q3aFnRajKAi/At+9rzwflZNN10SA5PcdCvxc35GFfTdM2a6O5GA7tiIbLuOOzdjPYPbC3RxP4tpXOHVWw==}
+    peerDependencies:
+      '@nestjs/common': ^7.0.0 || ^8.0.0 || ^9.0.0
+      '@nestjs/core': ^7.0.0 || ^8.0.0 || ^9.0.0
+      reflect-metadata: ^0.1.12
+    dependencies:
+      '@nestjs/common': 8.4.7_b11626e1d3e8723ed81a03aa155de8e2
+      '@nestjs/core': 8.4.7_98d4e1064a231daa5940e5cf20e5b108
+      cron: 2.3.0
+      reflect-metadata: r2.cnpmjs.org/reflect-metadata/0.1.13
+      uuid: 9.0.0
+    dev: false
+
   /@nestjs/schematics/8.0.11_chokidar@3.5.3+typescript@4.7.4:
     resolution: {integrity: sha512-W/WzaxgH5aE01AiIErE9QrQJ73VR/M/8p8pq0LZmjmNcjZqU5kQyOWUxZg13WYfSpJdOa62t6TZRtFDmgZPoIg==}
     peerDependencies:
@@ -1633,6 +1649,12 @@ packages:
       path-type: r2.cnpmjs.org/path-type/4.0.0
       yaml: r2.cnpmjs.org/yaml/1.10.2
     dev: true
+
+  /cron/2.3.0:
+    resolution: {integrity: sha512-ZN5HP8zDY41sJolMsbc+GksRATcbvkPKF5wR/qc8FrV4NBVi9ORQa1HmYa5GydaysUB80X9XpRlRkooa5uEtTA==}
+    dependencies:
+      luxon: 3.3.0
+    dev: false
 
   /debug/2.6.9:
     resolution: {integrity: sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==}
@@ -2651,6 +2673,11 @@ packages:
 
   /lru-cache/7.18.3:
     resolution: {integrity: sha512-jumlc0BIUrS3qJGgIkWZsyfAM7NCWiBcCDhnd+3NNM5KbBmLTgHVfWBcg6W+rLUsIpzpERPsvwUP7CckAQSOoA==}
+    engines: {node: '>=12'}
+    dev: false
+
+  /luxon/3.3.0:
+    resolution: {integrity: sha512-An0UCfG/rSiqtAIiBPO0Y9/zAnHUZxAMiCpTd5h2smgsj7GGmcenvrvww2cqNA8/4A5ZrD1gJpHN2mIHZQF+Mg==}
     engines: {node: '>=12'}
     dev: false
 

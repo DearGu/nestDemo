@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { ScheduleModule } from '@nestjs/schedule';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import envConfig from '../config/env';
 import { AppController } from './app.controller';
@@ -11,10 +12,12 @@ import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
+    // 配置文件设置
     ConfigModule.forRoot({
       isGlobal: true, // 设置为全局
       envFilePath: [envConfig.path],
     }),
+    // typeORM
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       inject: [ConfigService],
@@ -30,6 +33,8 @@ import { UserModule } from './user/user.module';
         // synchronize: true, //根据实体自动创建数据库表， 生产环境建议关闭
       }),
     }),
+    // 定时任务
+    ScheduleModule.forRoot(),
     PostsModule,
     UserModule,
     AuthModule,
